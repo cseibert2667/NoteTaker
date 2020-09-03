@@ -1,1 +1,7 @@
-[{"id": "53b18cc4-1185-497c-87cf-978a119accdd", "title":"Test Title","text":"Test text"}]
+[
+  {
+    "title": "Test Title",
+    "text": "Test text",
+    "id": "53b18cc4-1185-497c-87cf-978a119accdd"
+  }
+]
