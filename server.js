@@ -13,9 +13,9 @@ app.use(logger("dev"));
 app.use(express.static("public"));
 // route to get saved notes
 app.get("/api/notes", function(req,res){
-  savedNotes = fs.readFileSync(__dirname + "/db/db.json", "utf8");
-  savedNotes = JSON.parse(savedNotes);
-  res.json(savedNotes);
+  savedNotes = fs.readFile(__dirname + "/db/db.json", "utf8", function(err, data){
+    res.json(JSON.parse(data));
+  });
 });
 // route to save a note (also assigns unique id)
 app.post("/api/notes", function(req,res){
