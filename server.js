@@ -30,6 +30,19 @@ app.post("/api/notes", function(req,res){
     })
   })
 })
+// route for deleting notes
+app.delete("/api/notes/:id", function (req,res){
+  const {id} = req.params;
+  fs.readFile(__dirname + "/db/db.json", "utf8", function (err, data){
+    let savedNotes = JSON.parse(data);
+    savedNotes = savedNotes.filter((savedNote) => savedNote.id !== id);
+    const filteredNotes = JSON.stringify(savedNotes, null, 2);
+    fs.writeFile(__dirname + "/db/db.json", filteredNotes, function () {
+      res.json(true);
+    })
+  })
+
+})
 // route to load notes.html
 app.get("/notes", function(req,res){
   res.sendFile(path.join(__dirname + "/public/notes.html"))
